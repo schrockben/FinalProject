@@ -1,0 +1,9 @@
+SELECT basic.title FROM basic JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND basic.start > 1990 AND akas.region = "US" AND akas.language = "en";
+
+CREATE TABLE ratings (titleid TEXT, rating DEC, votes INT);
+
+CREATE TABLE basic (titleid TEXT, type TEXT, title TEXT, original TEXT, isAdult INT, start INT, end INT, runtime INT, genre TEXT);
+CREATE TABLE names (personid TEXT, name TEXT, birth INT, death INT, profession TEXT, knowntitles TEXT);
+CREATE TABLE akas (titleid TEXT, ordering INT, title TEXT, region TEXT, language TEXT, types TEXT, attributes TEXT, original INT);
+
+sudo mysql
