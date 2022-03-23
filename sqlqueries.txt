@@ -1,20 +1,20 @@
-SELECT basic.title FROM basic JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND basic.start > 2021 AND akas.region = "US" AND akas.language = "en" AND basic.titleid = (SELECT titleid FROM ratings WHERE votes > 350000);
 
-SELECT titleid FROM ratings WHERE votes > 350000;
+#Create the tables
 CREATE TABLE ratings (titleid TEXT, rating DEC, votes INT);
-
 CREATE TABLE basic (titleid TEXT, type TEXT, title TEXT, original TEXT, isAdult INT, start INT, end INT, runtime INT, genre TEXT);
 CREATE TABLE names (personid TEXT, name TEXT, birth INT, death INT, profession TEXT, knowntitles TEXT);
 CREATE TABLE akas (titleid TEXT, ordering INT, title TEXT, region TEXT, language TEXT, types TEXT, attributes TEXT, original INT);
 
-SELECT basic.title FROM basic  JOIN akas ON basic.titleid = akas.titleid WHERE basic.titleid IN (SELECT titleid FROM ratings WHERE votes > 350000);
-SELECT DISTINCT basic.title FROM basic  JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND basic.titleid IN (SELECT titleid FROM ratings WHERE votes > 250000);   THIS IS THE MOVIES
-INSERT INTO movies (title) SELECT DISTINCT basic.title FROM basic  JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND basic.titleid IN (SELECT titleid FROM ratings WHERE votes > 250000); CODE USED TO INSERT
 
-SELECT * FROM principles JOIN basic ON basic.titleid = principles.titleid WHERE basic.title IN (SELECT title FROM movies) GROUP BY principles.titleid ORDER BY principles.ordered;
 
+#Creating table of movies where votes are greater than 250000 in number, non adult titles, and type movies
 CREATE TABLE movielist AS SELECT DISTINCT basic.title, basic.titleid FROM basic  JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND basic.titleid IN (SELECT titleid FROM ratings WHERE votes > 250000);  Has movies and title id
 
+#Create table that links actors to movies
 CREATE TABLE actors AS SELECT * FROM principles WHERE titleid IN (SELECT titleid FROM movielist);
 
+#Create table that gives actors names and info
 CREATE TABLE actornames AS SELECT * FROM names JOIN principles ON names.personid = principles.personid WHERE principles.titleid IN (SELECT titleid FROM movielist);
+
+#Finding actors from movie
+SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid = "tt8946378";
