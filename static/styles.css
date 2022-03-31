@@ -1,8 +1,102 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 main {
-    
+  height: 80vh;
+
+}
+
+#flex-container1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#help {
+  padding-left: 1%;
+  font-size: 2rem; 
+  color: white;
+}
+
+#scorehistory {
+  padding-right: 1%;
+  font-size: 2rem; 
+  color: white;
 }
 
 .text {
   color: white;
   text-align: center;
+  font-family: 'Dongle', sans-serif;
+font-family: 'Playfair Display', serif;
+  font-size: 225%
 }
+
+.white {
+  color: white;  
+}
+
+#timestamp {
+  text-align: center;
+  color: white;
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 100%;
+  padding-bottom: 4%;
+}
+
+#flex-container2 {
+  display: flex;
+  justify-content: space-evenly;
+  max-height: 75vh;
+  
+
+}
+
+#game-box {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.actor-name {
+  text-align: center;
+  color: white;
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 5vw;
+  padding-top: 5%;
+}
+
+#previous-box {
+  padding: 5%;
+  border-radius: 10px;
+  background-color: black;
+  opacity: 0.5;
+
+}
+
+#vl {
+  border-left: 20px solid green;
+  max-height: 45vw;
+}
+
+.previous-actor {
+  text-align: center;
+  color: white;
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 5vh;
+}
+
+#movie-guess {
+  border: none;
+}
+
+#hint {
+  margin-left: 30vw;
+}
+
+
