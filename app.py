@@ -25,5 +25,10 @@ db = SQL("sqlite:///moviesmaster.db")
 # Set up index page
 @app.route("/")
 def index():
-    return render_template("index.html")
+    movies = db.execute("SELECT title, titleid FROM movielist;")
+    todays_movie = movies[0]['title']
+    todays_movieid = movies[0]['titleid']
+    actors= db.execute("SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid =  (?) LIMIT 5", todays_movieid)
+
+    return render_template("index.html", todays_movie=todays_movie, actors=actors)
     

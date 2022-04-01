@@ -67,6 +67,7 @@ font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
   font-size: 5vw;
   padding-top: 5%;
+  padding-bottom: 6%;
 }
 
 #previous-box {
@@ -79,7 +80,9 @@ font-family: 'Playfair Display', serif;
 
 #vl {
   border-left: 20px solid green;
-  max-height: 45vw;
+  height: 40px;
+  max-height: 45rem;
+  
 }
 
 .previous-actor {
@@ -96,7 +99,52 @@ font-family: 'Playfair Display', serif;
 }
 
 #hint {
+  margin-top: 2%;
   margin-left: 30vw;
 }
 
+#movie0 {
+  display: none;
+}
 
+#movie1 {
+  display: none;
+}
+
+#movie2 {
+  display: none;
+}
+
+#movie3 {
+  display: none;
+}
+
+#movie4 {
+  
+}
+
+@media (max-width: 800px) {
+  #flex-container2 {
+    flex-direction: column;
+  }
+
+  .previous-actor {
+    text-align: center;
+    color: white;
+    font-family: 'Dongle', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3vh;
+    margin-top: 1%;
+  }
+
+  #hint {
+    margin-top: 2%;
+    margin-left: 37%;
+  }
+
+  #vl {
+    border-bottom: 20px solid green;
+    max-height: 45vw;
+    width: 20%;
+  }

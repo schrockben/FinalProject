@@ -18,3 +18,29 @@ CREATE TABLE actornames AS SELECT * FROM names JOIN principles ON names.personid
 
 #Finding actors from movie
 SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid = "tt8946378";
+
+#SCHEMA
+
+CREATE TABLE movielist(title TEXT,titleid TEXT);
+CREATE TABLE actors(
+  titleid TEXT,
+  ordered INT,
+  personid TEXT,
+  category TEXT,
+  job TEXT,
+  characters TEXT
+);
+CREATE TABLE actornames(
+  personid TEXT,
+  name TEXT,
+  birth INT,
+  death INT,
+  profession TEXT,
+  knowntitles TEXT,
+  titleid TEXT,
+  ordered INT,
+  "personid:1" TEXT,
+  category TEXT,
+  job TEXT,
+  characters TEXT
+);
