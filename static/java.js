@@ -27,9 +27,9 @@ function addActorName() {
         document.getElementById("actor4").style.display ="block";
         }
     guessCount = guessCount + 1;
-    // if (guessCount => 5) {
-       // return loserFunction();
-    //}
+     if (guessCount => 5) {
+        return loserFunction();
+    }
 }
 
 //function checkGuess() {
