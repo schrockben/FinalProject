@@ -1,14 +1,12 @@
 // src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"
 // src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"
 
-
+var guessCount = 0;
+var userAnswer = "placeholder";
 const hint = document.getElementById("hint");
 const movieGuess = document.getElementById("submit-guess");
 hint.addEventListener("click", addActorName);
 movieGuess.addEventListener("click", checkGuess);
-var guessCount = 0;
-var userAnswer = "placeholder";
-
 
 
 function addActorName() {
