@@ -4,8 +4,10 @@
 <head>
     <link href="/static/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script type="text/javascript" src="/static/java.js"></script>
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
+    </script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">  
+    </script> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Playfair+Display&display=swap" rel="stylesheet">
@@ -21,7 +23,7 @@
   <header>
     <div id="flex-container1">
       <a id="help" class="bi bi-info-circle-fill"></a>
-      <div class="text">Flickle</div>
+      <div class="text" id="flickle">Flickle</div>
       <a id="scorehistory" class="bi bi-bar-chart-fill"></a>
     </div>
   </header>
@@ -30,23 +32,42 @@
     <div id="timestamp">Timestamp</div>
       <div id="flex-container2">
         <div id="game-box">
-          <div class="actor-name" >Actor name</div>
-          <form action="">
-            <input class="form-control" type="text" id="movie-guess" name="movie-guess" placeholder="Name the movie..." autocomplete="on"> <!-- Will use Jquery autocomplete UI -->
-          </form>
+          <div class="actor-name" id="actor-name">{{ actors[0]['name'] }}</div>
         </div>
-        <div id="vl"></div> <!-- Making a vertical line-->
-        <div id="previous-box">
-          <div class="previous-actor" id="movie0">{{ actors[0]['name'] }}</div>
-          <div class="previous-actor" id="movie1">{{ actors[1]['name'] }}</div>
-          <div class="previous-actor" id="movie2">{{ actors[2]['name'] }}</div>
-          <div class="previous-actor" id="movie3">{{ actors[3]['name'] }}</div>
-          <div class="previous-actor" id="movie4">{{ actors[4]['name'] }}</div>
-        </div>
-      </div>
-    <form action="">
-      <button class="btn btn-danger" type="button" name="hint" id="hint" >Need a Hint</button>
-    </form>
+      </div>  
+      <form action="">
+          <!-- Will use Jquery autocomplete UI, disable enter to submit -->
+          <input class="form-control" type="text" id="movie-guess" name="movie-guess" placeholder="Name the movie..." onkeydown="return (event.keyCode!=13);"> 
+          <script>
+            $( function() {
+              var availableTags = [
+                  {% for movie in all_movies %}
+                      "{{ movie.title }}",
+                  {% endfor %}
+              ];
+              $( "#movie-guess" ).autocomplete({
+                source: availableTags
+              });
+            } );
+            </script>
+        </form>
+    <div id="submit-button-container">
+      <button class="btn btn-danger" type="button" name="submit-guess" id="submit-guess" >Guess</button>
+    </div>
+    <div id="hint-container">
+      <form action="">
+        <button class="btn btn-danger" type="button" name="hint" id="hint" >Need a Hint</button>
+      </form>
+    </div>
+    <div id="previous-box">
+      <div class="previous-actor" id="actor0">{{ actors[0]['name'] }}</div>
+      <div class="previous-actor" id="actor1">{{ actors[1]['name'] }}</div>
+      <div class="previous-actor" id="actor2">{{ actors[2]['name'] }}</div>
+      <div class="previous-actor" id="actor3">{{ actors[3]['name'] }}</div>
+      <div class="previous-actor" id="actor4">{{ actors[4]['name'] }}</div>
+    </div>
   </main>
   <hr class="white">
+  <script type="text/javascript" src="/static/java.js"></script>
+  
 </body>

@@ -1,7 +1,7 @@
 import os
 import sys
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, json
 from flask_session import Session
 from tempfile import mkdtemp
 import datetime
@@ -28,7 +28,8 @@ def index():
     movies = db.execute("SELECT title, titleid FROM movielist;")
     todays_movie = movies[0]['title']
     todays_movieid = movies[0]['titleid']
-    actors= db.execute("SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid =  (?) LIMIT 5", todays_movieid)
+    actors = db.execute("SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid =  (?) LIMIT 5", todays_movieid)
+    all_movies = db.execute('SELECT title FROM movielist;')
 
-    return render_template("index.html", todays_movie=todays_movie, actors=actors)
+    return render_template("index.html", todays_movie=todays_movie, actors=actors, all_movies=all_movies)
     

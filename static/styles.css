@@ -66,16 +66,7 @@ font-family: 'Playfair Display', serif;
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
   font-size: 5vw;
-  padding-top: 5%;
-  padding-bottom: 6%;
-}
-
-#previous-box {
-  padding: 5%;
-  border-radius: 10px;
-  background-color: black;
-  opacity: 0.5;
-
+  margin-bottom: 3%;
 }
 
 #vl {
@@ -83,6 +74,12 @@ font-family: 'Playfair Display', serif;
   height: 40px;
   max-height: 45rem;
   
+}
+
+#previous-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
 }
 
 .previous-actor {
@@ -94,33 +91,46 @@ font-family: 'Playfair Display', serif;
   font-size: 5vh;
 }
 
-#movie-guess {
+#submit-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#submit-guess {
+  margin-top: 3%;
   border: none;
 }
 
+
+
+#hint-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+
 #hint {
-  margin-top: 2%;
-  margin-left: 30vw;
+
 }
 
-#movie0 {
+#actor0 {
   display: none;
 }
 
-#movie1 {
+#actor1 {
   display: none;
 }
 
-#movie2 {
+#actor2 {
   display: none;
 }
 
-#movie3 {
+#actor3 {
   display: none;
 }
 
-#movie4 {
-  
+#actor4 {
+  display: none;
 }
 
 @media (max-width: 800px) {
