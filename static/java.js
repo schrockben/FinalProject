@@ -32,7 +32,7 @@ function addActorName() {
 
 function loserFunction() {
     document.getElementById('box').style.display = "block";
-    document.getElementById('score').innerHTML = '0';
+    
 }
 
 function winnerFunction() {

@@ -55,6 +55,12 @@ main {
   font-family: 'Quicksand', sans-serif;
   color: black !important; 
   font-size: 3vh;
+  display: flex;
+  justify-content: center;
+}
+
+#shareButton {
+  margin-left: 2%;
 }
 
 #values {
