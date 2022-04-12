@@ -69,6 +69,19 @@ font-family: 'Playfair Display', serif;
   margin-bottom: 3%;
 }
 
+#actor-name1 {
+  display: none;
+}
+
+#actor-name2 {
+  display: none;
+}
+
+#actor-name3 {
+  display: none;
+}
+
+
 #vl {
   border-left: 20px solid green;
   height: 40px;
@@ -109,10 +122,6 @@ font-family: 'Playfair Display', serif;
   margin-top: 3%;
 }
 
-#hint {
-
-}
-
 #actor0 {
   display: none;
 }
@@ -126,10 +135,6 @@ font-family: 'Playfair Display', serif;
 }
 
 #actor3 {
-  display: none;
-}
-
-#actor4 {
   display: none;
 }
 
@@ -158,3 +163,5 @@ font-family: 'Playfair Display', serif;
     max-height: 45vw;
     width: 20%;
   }
+
+ 

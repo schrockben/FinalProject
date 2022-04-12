@@ -4,35 +4,45 @@
 var guessCount = 0;
 var userAnswer = "placeholder";
 const hint = document.getElementById("hint");
-const movieGuess = document.getElementById("submit-guess");
+const movieGuess = document.getElementById('submit-guess');
 hint.addEventListener("click", addActorName);
 movieGuess.addEventListener("click", checkGuess);
 
 
 function addActorName() {
-    document.getElementById("actor-name").innerHTML = "test";
+
     if (guessCount === 0) {
         document.getElementById("actor0").style.display ="block";
+        document.getElementById("actor-name0").style.display = "none";
+        document.getElementById("actor-name1").style.display = "block";
         }
     if (guessCount === 1) {
         document.getElementById("actor1").style.display ="block";
+        document.getElementById("actor-name1").style.display = "none";
+        document.getElementById("actor-name2").style.display = "block";
         }
     if (guessCount === 2) {
         document.getElementById("actor2").style.display ="block";
+        document.getElementById("actor-name2").style.display = "none";
+        document.getElementById("actor-name3").style.display = "block";
+        hint.innerHTML= "I give up";
         }
-    if (guessCount === 3) {
-        document.getElementById("actor3").style.display ="block";
-        }
-    if (guessCount === 4) {
-        document.getElementById("actor4").style.display ="block";
-        }
+
     guessCount = guessCount + 1;
-     if (guessCount => 5) {
-        return loserFunction();
+     if (guessCount === 4 ) {
+         document.getElementById('actor-name3').innerHTML = "fail";
+        // return loserFunction();
     }
 }
 
-//function checkGuess() {
-
-// }
+function checkGuess() {
+    let movieGuess = document.getElementById("movie-guess").value;
+    if (movieGuess == "Jaws") {
+        alert("winner"); 
+    }
+    else
+    {
+        addActorName();
+    }
+}
 
