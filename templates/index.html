@@ -18,8 +18,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body class="bg-dark">
+<body class="body">
   <header>
     <div id="flex-container1">
       <a id="help" class="bi bi-info-circle-fill"></a>
@@ -57,6 +56,18 @@
     <div id="submit-button-container">
       <button class="btn btn-danger" type="button" name="submit-guess" id="submit-guess" >Guess</button>
     </div>
+    <!-- Pop up display for winning/losing-->
+    <div id="box"> 
+      <button id="exit" class="btn btn-light" onclick="hideBox()">Back</button>
+      <div class="todays_movie_revealed">{{ todays_movie }}</div>
+      <div id="trailer">
+        <iframe width="608" height="260" src="https://www.youtube.com/embed/U1fu_sA7XhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+        <div id="scoreholder">Your Score 
+          <div id="score"></div>
+        </div>
+      <div id="values">Best streak:  Games played: </div>
+    </div> 
     <div id="hint-container">
       <form action="">
         <button class="btn btn-danger" type="button" name="hint" id="hint" >Next Actor</button>
@@ -71,5 +82,20 @@
   </main>
   <hr class="white">
   <script type="text/javascript" src="/static/java.js"></script>
-  
+  <!-- Function to check users answer -->
+  <script> 
+    const movieGuess = document.getElementById('submit-guess');
+    movieGuess.addEventListener("click", checkGuess);
+    function checkGuess() {
+      let movieGuess = document.getElementById("movie-guess").value;
+      if (movieGuess == {{ todays_movie|tojson }}) {
+          winnerFunction(); 
+      }
+      else
+      {
+          addActorName();
+      }
+    }
+  </script>
 </body>
+

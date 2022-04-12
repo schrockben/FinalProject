@@ -4,6 +4,67 @@ main {
   height: 80vh;
 
 }
+.body {
+  background-image: url('https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1410.jpg?w=900&t=st=1649791577~exp=1649792177~hmac=a97954b87580543f4c9045587b1d33b5562450ba01f2fcf7babffcfe896caf20');
+}
+
+#box {
+    color: white;
+    font-family: 'Dongle', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3vh;
+    margin-top: 1%;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0.9699230033810399) 0%, rgba(255,255,255,1) 49%, rgba(233,233,233,0.9587185215883228) 100%);
+    opacity: 1;
+    border-radius: 10px;
+    position: absolute;
+    width: 50%;
+    height: 80%;
+    left: 25%;
+    top: 10%;
+    display: none;
+}
+
+.todays_movie_revealed {
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  color: black !important; 
+  font-size: 10vh;
+  text-align: center;
+}
+#trailer {
+  padding-left: 10%;
+}
+
+#scoreholder {
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  color: black !important; 
+  font-size: 6vh;
+  text-align: center;
+  border-style: solid;
+}
+
+#score {
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  color: black !important; 
+  font-size: 3vh;
+}
+
+#values {
+  font-family: 'Dongle', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Quicksand', sans-serif;
+  color: black !important; 
+  font-size: 4vh;
+  text-align: center;
+}
 
 #flex-container1 {
   display: flex;
@@ -31,7 +92,11 @@ font-family: 'Playfair Display', serif;
 }
 
 .white {
-  color: white;  
+  color: white !important;
+}
+
+.black {
+  color: black !important;
 }
 
 #timestamp {
@@ -163,5 +228,3 @@ font-family: 'Playfair Display', serif;
     max-height: 45vw;
     width: 20%;
   }
-
- 

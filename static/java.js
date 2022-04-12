@@ -2,12 +2,8 @@
 // src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"
 
 var guessCount = 0;
-var userAnswer = "placeholder";
 const hint = document.getElementById("hint");
-const movieGuess = document.getElementById('submit-guess');
 hint.addEventListener("click", addActorName);
-movieGuess.addEventListener("click", checkGuess);
-
 
 function addActorName() {
 
@@ -30,19 +26,22 @@ function addActorName() {
 
     guessCount = guessCount + 1;
      if (guessCount === 4 ) {
-         document.getElementById('actor-name3').innerHTML = "fail";
-        // return loserFunction();
+        loserFunction();
     }
 }
 
-function checkGuess() {
-    let movieGuess = document.getElementById("movie-guess").value;
-    if (movieGuess == "Jaws") {
-        alert("winner"); 
-    }
-    else
-    {
-        addActorName();
-    }
+function loserFunction() {
+    document.getElementById('box').style.display = "block";
+    document.getElementById('score').innerHTML = '0';
 }
+
+function winnerFunction() {
+    document.getElementById('box').style.display = "block";
+    document.getElementById('score').innerHTML = '1';
+}
+
+function hideBox() {
+    document.getElementById('box').style.display = "none";
+}
+
 
