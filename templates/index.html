@@ -19,7 +19,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body class="body">
+<body class="body" onload="trailer()">
   <header>
     <div id="flex-container1">
       <a id="help" class="bi bi-info-circle-fill"></a>
@@ -61,9 +61,6 @@
     <div id="box"> 
       <button id="exit" class="btn btn-light" onclick="hideBox()">Back</button>
       <div class="todays_movie_revealed">{{ todays_movie }}</div>
-      <div id="trailer">
-        <iframe width="608" height="260" src="https://www.youtube.com/embed/U1fu_sA7XhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
         <div id="scoreholder"> 
           <div id="score"> <!-- person icons per score-->
             <i id='one' class="bi bi-person-square"></i>
@@ -73,7 +70,16 @@
             <button class ="btn btn-secondary" id="shareButton" type="button">Share</button>
           </div>
         </div>
-      <div id="values">Best streak:  Games played: </div>
+        <div id="trailer">
+          <a class="trailer-link" id="trailer-link">Trailer</a>
+          <script>
+            const movie = {{ todays_movie|tojson }};
+            const movieFixed = movie.replace(/\s/g, '-'); 
+            function trailer() {
+              document.getElementById("trailer-link").href="https://www.traileraddict.com/" + movieFixed + "/trailer";
+            }
+          </script>
+        </div>
     </div> 
     <div id="hint-container">
       <form action="">

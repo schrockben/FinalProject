@@ -5,7 +5,7 @@ main {
 
 }
 .body {
-  background-image: url('https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1410.jpg?w=900&t=st=1649791577~exp=1649792177~hmac=a97954b87580543f4c9045587b1d33b5562450ba01f2fcf7babffcfe896caf20');
+  background-color:black;
 }
 
 #box {
@@ -21,7 +21,7 @@ main {
     border-radius: 10px;
     position: absolute;
     width: 50%;
-    height: 80%;
+    height: 50%;
     left: 25%;
     top: 10%;
     display: none;
@@ -36,7 +36,8 @@ main {
   text-align: center;
 }
 #trailer {
-  padding-left: 10%;
+
+  text-align: center;
 }
 
 #scoreholder {
@@ -215,7 +216,7 @@ font-family: 'Playfair Display', serif;
     flex-direction: column;
   }
 
-  .previous-actor {
+.previous-actor {
     text-align: center;
     color: white;
     font-family: 'Dongle', sans-serif;
@@ -223,15 +224,27 @@ font-family: 'Playfair Display', serif;
     font-family: 'Quicksand', sans-serif;
     font-size: 3vh;
     margin-top: 1%;
-  }
+}
 
-  #hint {
+#hint {
     margin-top: 2%;
     margin-left: 37%;
-  }
+}
 
-  #vl {
+#vl {
     border-bottom: 20px solid green;
     max-height: 45vw;
     width: 20%;
-  }
+}
+
+
+.trailer-link {
+    color: black
+    font-family: 'Dongle', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10vh;
+    margin-top: 1%;
+}
+
+  

@@ -28,12 +28,7 @@ db = SQL("sqlite:///moviesmaster.db")
 def setcookie():
     resp = make_response(redirect("/splash"))
     resp.set_cookie('user', 'returning') # set initial cookie if user has been here before
-    resp.set_cookie('streak', '0') # set streak to 0
-    resp.set_cookie('total', '0') # set total number of plays
     return resp
-
-
-    # framework = request.cookies.get('framework')
 
 @app.route("/splash")
 def splash():
@@ -44,17 +39,18 @@ def splash():
 # Set up index page
 @app.route("/")
 def index():
-    framework = request.cookies.get('user')
-    if framework != 'returning':
+    user = request.cookies.get('user')
+    if user != 'returning':
         return redirect('/set')
     else:
         movies = db.execute("SELECT title, titleid FROM movielist;")
-        todays_movie = movies[2]['title']
-        todays_movieid = movies[2]['titleid']
+        todays_movie = movies[5]['title']
+        todays_movieid = movies[5]['titleid']
         actors = db.execute("SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid =  (?) AND (actornames.category = 'actor' OR actornames.category = 'actress') LIMIT 4", todays_movieid)
         all_movies = db.execute('SELECT title FROM movielist;')
 
         return render_template("index.html", todays_movie=todays_movie, actors=actors, all_movies=all_movies)
+
 
 
     
