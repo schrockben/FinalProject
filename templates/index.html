@@ -22,15 +22,30 @@
 <body class="body" onload="trailer()">
   <header>
     <div id="flex-container1">
-      <a id="help" class="bi bi-info-circle-fill" onclick="return welcome();"></a>
-      <div class="text" id="flickle">Flickle</div>
-      <a id="scorehistory" class="bi bi-bar-chart-fill"></a>
+      <button id="helpbutton">
+        <a id="help" class="bi bi-info-circle-fill" onclick="return welcome();"></a>
+      </button>
+      <div class="text" id="flickle">Cinemle</div>
+      <button id="statsbutton">
+      <a id="scorehistory" class="bi bi-bar-chart-fill" onclick="return stats()"></a>
+      </button>
     </div>
   </header>
   <hr class="white">
   <main>
+    <div type="modal" id="stats" class="stats">
+      <div class="wins">
+      <span id="wins"></span>
+      </div>
+      <div class="games">
+      <span id="games"></span>
+      </div>
+      <div class="winperc">
+      <span id="winperc"></span>
+      </div>
+    </div>
     <div type="modal" id="welcome" class="welcome">
-      <div>Welcome to Flickle</div>
+      <div>Welcome to Cinemle</div>
       <p>Are you a movie buff? Try and guess the movie based upon the actors.</p>
       <p>You will get one actor at a time and you can either guess the movie or skip to reveal another actor.</p>
       <p>If you guess wrong you you we will reveal another actor and you can try again. </p>
@@ -72,11 +87,11 @@
       <div class="todays_movie_revealed">{{ todays_movie }}</div>
         <div id="scoreholder"> 
           <div id="score"> <!-- person icons per score-->
-            <i id='one' class="bi bi-person-square"></i>
-            <i id='two' class="bi bi-person-square"></i>
-            <i id='three' class="bi bi-person-square"></i>
-            <i id='four' class="bi bi-person-square"></i>
-            <button class ="btn btn-secondary" id="shareButton" type="button">Share</button>
+            <div id='one'></div>
+            <div id='two'></div>
+            <div id='three'></div>
+            <div id='four'></div>
+            <button class ="btn btn-secondary" id="shareButton" type="button" >Share</button>
           </div>
         </div>
         <div id="trailer">
@@ -116,7 +131,6 @@
         }
         else
         {
-          wrongAnswer();
           addActorName();
         }
       }

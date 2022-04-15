@@ -12,6 +12,7 @@ function initSite() {
     const firstTime = window.localStorage.getItem("currentMovie");
     // If first visit
     if (!firstTime) {
+
         window.localStorage.setItem('userGames', 0);
         window.localStorage.setItem('userWins', 0)
         welcome();
@@ -21,18 +22,40 @@ function initSite() {
         window.localStorage.setItem('currentMovie', 'start')
     }
     if (window.localStorage.getItem('currentMovie') == 'completed') {
-        let one = window.localStorage.getItem('one');
-        let two = window.localStorage.getItem('two');
-        let three = window.localStorage.getItem('three');
-        let four = window.localStorage.getItem('four');
-        let scoreholderText = window.localStorage.getItem('scoreholderText');
-        document.getElementById('one').style.color = one;
-        document.getElementById('two').style.color = two;
-        document.getElementById('three').style.color = three;
-        document.getElementById('four').style.color = four;
-        document.getElementById('scoreholder').innerHTML = scoreholderText;
-        openResultsModal();
-    }    
+
+        if (checkDate() == true) {
+            let one = window.localStorage.getItem('one');
+            let two = window.localStorage.getItem('two');
+            let three = window.localStorage.getItem('three');
+            let four = window.localStorage.getItem('four');
+            let scoreholderText = window.localStorage.getItem('scoreholderText');
+            document.getElementById('one').innerHTML = one;
+            document.getElementById('two').innerHTML = two;
+            document.getElementById('three').innerHTML = three;
+            document.getElementById('four').innerHTML = four;
+            document.getElementById('scoreholder').innerHTML = scoreholderText;
+            openResultsModal();
+        }
+        else {
+            window.localStorage.setItem('currentMovie', 'start');
+        }
+    }   
+}
+
+function checkDate() {
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth() + 1;
+    let day = d.getDate();
+    let userday = Number(window.localStorage.getItem('day'));
+    let usermonth = Number(window.localStorage.getItem('month'));
+    let useryear = Number(window.localStorage.getItem('year'));
+    if (year === useryear && day === userday && month === usermonth) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 function welcome() {
@@ -72,63 +95,80 @@ function addActorName() {
 //if user loses
 function loserFunction() {
     document.getElementById("scoreholder").innerHTML += "You didnt get the movie, try again tomorrow!"
-    document.getElementById('one').style.color = "red";
-    document.getElementById('two').style.color = "red";
-    document.getElementById('three').style.color = "red";
-    document.getElementById('four').style.color = "red";
+    document.getElementById('one').innerHTML = '😭'
+    document.getElementById('two').innerHTML = '😭'
+    document.getElementById('three').innerHTML = '😭'
+    document.getElementById('four').innerHTML = '😭'
     openResultsModal();
-    completeSession()
-    setResults()
+    completeSession();
+    setResults();
+    addGame();
 }
 
 //open Results Modal
 function openResultsModal() {
-    var resultsModal = document.getElementById('box')
+    var resultsModal = document.getElementById('box');
     resultsModal.style.display = "block";
 }
 
 //If user wins
 function winnerFunction() {
     if (guessCount === 0) {
-        document.getElementById("scoreholder").innerHTML += "Great Job!"
-        document.getElementById('one').style.color = "green";
-        document.getElementById('two').style.color = "black";
-        document.getElementById('three').style.color = "black";
-        document.getElementById('four').style.color = "black";
+        document.getElementById("scoreholder").innerHTML += "Great Job!";
+        document.getElementById('one').innerHTML = '🎞️'
         openResultsModal();
-        completeSession()
-        setResults()
+        completeSession();
+        setResults();
+        addWin();
+        addGame();
         }
     if (guessCount === 1) {
-        document.getElementById("scoreholder").innerHTML += "Not too bad!"
-        document.getElementById('one').style.color = "green";
-        document.getElementById('two').style.color = "green";
-        document.getElementById('three').style.color = "black";
-        document.getElementById('four').style.color = "black";
+        document.getElementById("scoreholder").innerHTML += "Not too bad!";
+        document.getElementById('one').innerHTML = '😭'
+        document.getElementById('two').innerHTML = '🎞️'
         openResultsModal();
-        completeSession()
-        setResults()
+        completeSession();
+        setResults();
+        addWin();
+        addGame();
         }
     if (guessCount === 2) {
-        document.getElementById("scoreholder").innerHTML += "You got it."
-        document.getElementById('one').style.color = "green";
-        document.getElementById('two').style.color = "green";
-        document.getElementById('three').style.color = "green";
-        document.getElementById('four').style.color = "black";
+        document.getElementById("scoreholder").innerHTML += "You got it.";
+        document.getElementById('one').innerHTML = '😭'
+        document.getElementById('two').innerHTML = '😭'
+        document.getElementById('three').innerHTML = '🎞️'
         openResultsModal();
-        completeSession()
-        setResults()
+        completeSession();
+        setResults();
+        addWin();
+        addGame();
         }
     if (guessCount === 3) {
-        document.getElementById("scoreholder").innerHTML += "That was close!"
-        document.getElementById('one').style.color = "green";
-        document.getElementById('two').style.color = "green";
-        document.getElementById('three').style.color = "green";
-        document.getElementById('four').style.color = "green";
+        document.getElementById("scoreholder").innerHTML += "That was close!";
+        document.getElementById('one').innerHTML = '😭'
+        document.getElementById('two').innerHTML = '😭'
+        document.getElementById('three').innerHTML = '😭'
+        document.getElementById('four').innerHTML = '🎞️'
         openResultsModal();
-        completeSession()
-        setResults()
+        completeSession();
+        setResults();
+        addWin();
+        addGame();
         }
+}
+
+function stats() {
+    wins = window.localStorage.getItem("userWins");
+    games = window.localStorage.getItem("userGames");
+    winperc = Math.round(Number(wins) / Number(games) * 100) ;
+    document.getElementById('wins').innerHTML = "Wins: " + + wins;
+    document.getElementById('games').innerHTML = "Games Played: " + games;
+    document.getElementById('winperc').innerHTML = "Win Percentage: " + winperc + "%";
+    document.getElementById('stats').style.display = "block";
+}
+
+function closeStats() {
+    document.getElementById('stats').style.display = "none";
 }
 
 //Close Welcome 
@@ -143,17 +183,44 @@ function hideBox() {
 
 function completeSession() {
     window.localStorage.setItem('currentMovie', 'completed');
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = d.getMonth() + 1;
+    let day = d.getDate();
+    window.localStorage.setItem('day', day);
+    window.localStorage.setItem('month', month);
+    window.localStorage.setItem('year', year);
 }
 
 function setResults() {
-    let one = document.getElementById('one').style.color;
-    let two = document.getElementById('two').style.color;
-    let three = document.getElementById('three').style.color;
-    let four = document.getElementById('four').style.color;
+    let one = document.getElementById('one').innerHTML
+    let two = document.getElementById('two').innerHTML
+    let three = document.getElementById('three').innerHTML
+    let four = document.getElementById('four').innerHTML
     let scoreholderText = document.getElementById('scoreholder').innerHTML;
     window.localStorage.setItem('one', one);
     window.localStorage.setItem('two', two);
     window.localStorage.setItem('three', three);
     window.localStorage.setItem('four', four);
     window.localStorage.setItem('scoreholderText', scoreholderText);
+}
+
+function addGame() {
+    let usergames = Number(window.localStorage.getItem('userGames'));
+    if (!usergames) {
+        window.localStorage.setItem('userGames', 1)
+    }
+    else {
+        window.localStorage.setItem('userGames', usergames + 1)
+    }
+}
+
+function addWin() {
+    let userwins = Number(window.localStorage.getItem('userWins'));
+    if (!userwins) {
+        window.localStorage.setItem('userWins', 1)
+    }
+    else {
+        window.localStorage.setItem('userWins', userwins + 1)
+    }
 }
