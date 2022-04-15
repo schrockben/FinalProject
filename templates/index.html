@@ -22,14 +22,23 @@
 <body class="body" onload="trailer()">
   <header>
     <div id="flex-container1">
-      <a id="help" class="bi bi-info-circle-fill"></a>
+      <a id="help" class="bi bi-info-circle-fill" onclick="return welcome();"></a>
       <div class="text" id="flickle">Flickle</div>
       <a id="scorehistory" class="bi bi-bar-chart-fill"></a>
     </div>
   </header>
   <hr class="white">
   <main>
-    <div id="timestamp">Timestamp</div>
+    <div type="modal" id="welcome" class="welcome">
+      <div>Welcome to Flickle</div>
+      <p>Are you a movie buff? Try and guess the movie based upon the actors.</p>
+      <p>You will get one actor at a time and you can either guess the movie or skip to reveal another actor.</p>
+      <p>If you guess wrong you you we will reveal another actor and you can try again. </p>
+      <p>If you cant guess the correct movie from four actors then you will have failed and will need to wait until tomorrow. The movie will change every day. Good Luck!</p>
+      <button class="btn btn-danger" onclick="closeWelcome()">Continue</button>
+  </div>
+    </div>
+    <div id="timestamp">{{ date }}</div>
       <div id="flex-container2">
         <div id="game-box">
           <div class="actor-name" id="actor-name0">{{ actors[0]['name'] }}</div>
@@ -58,8 +67,8 @@
       <button class="btn btn-danger" type="button" name="submit-guess" id="submit-guess" >Guess</button>
     </div>
     <!-- Pop up display for winning/losing-->
-    <div id="box"> 
-      <button id="exit" class="btn btn-light" onclick="hideBox()">Back</button>
+    <div id="box" type="modal" class="box"> 
+      <button class="exit" id="exit" onclick="hideBox()">Back</button>
       <div class="todays_movie_revealed">{{ todays_movie }}</div>
         <div id="scoreholder"> 
           <div id="score"> <!-- person icons per score-->
@@ -97,16 +106,19 @@
   <script type="text/javascript" src="/static/java.js"></script>
   <!-- Function to check users answer -->
   <script> 
-    const movieGuess = document.getElementById('submit-guess');
-    movieGuess.addEventListener("click", checkGuess);
-    function checkGuess() {
-      let movieGuess = document.getElementById("movie-guess").value;
-      if (movieGuess == {{ todays_movie|tojson }}) {
-          winnerFunction(); 
-      }
-      else
-      {
+    if (window.localStorage.getItem('currentMovie') != 'completed') {
+      const movieGuess = document.getElementById('submit-guess');
+      movieGuess.addEventListener("click", checkGuess);
+      function checkGuess() {
+        let movieGuess = document.getElementById("movie-guess").value;
+        if (movieGuess == {{ todays_movie|tojson }}) {
+            winnerFunction(); 
+        }
+        else
+        {
+          wrongAnswer();
           addActorName();
+        }
       }
     }
   </script>
