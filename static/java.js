@@ -5,6 +5,17 @@ initSite();
 var guessCount = 0;
 const hint = document.getElementById("hint");
 hint.addEventListener("click", addActorName);
+//shareButton = document.getElementById('shareButton');
+//shareButton.addEventListener('click', share) 
+
+function copy() {
+    let one = document.getElementById('one').innerHTML;
+    let two = document.getElementById('two').innerHTML;
+    let three = document.getElementById('three').innerHTML;
+    let four = document.getElementById('four').innerHTML;
+    let data = 'https://cinemle.com' + one + two + three + four
+    navigator.clipboard.writeText(data);
+}
 
 
 //Initialize site
@@ -115,7 +126,10 @@ function openResultsModal() {
 function winnerFunction() {
     if (guessCount === 0) {
         document.getElementById("scoreholder").innerHTML += "Great Job!";
-        document.getElementById('one').innerHTML = '🎞️'
+        document.getElementById('one').innerHTML = '🎞️';
+        document.getElementById('two').innerHTML = '◻️';
+        document.getElementById('three').innerHTML = '◻️';
+        document.getElementById('four').innerHTML = '◻️';
         openResultsModal();
         completeSession();
         setResults();
@@ -124,8 +138,10 @@ function winnerFunction() {
         }
     if (guessCount === 1) {
         document.getElementById("scoreholder").innerHTML += "Not too bad!";
-        document.getElementById('one').innerHTML = '😭'
-        document.getElementById('two').innerHTML = '🎞️'
+        document.getElementById('one').innerHTML = '😭';
+        document.getElementById('two').innerHTML = '🎞️';
+        document.getElementById('three').innerHTML = '◻️';
+        document.getElementById('four').innerHTML = '◻️';
         openResultsModal();
         completeSession();
         setResults();
@@ -134,9 +150,10 @@ function winnerFunction() {
         }
     if (guessCount === 2) {
         document.getElementById("scoreholder").innerHTML += "You got it.";
-        document.getElementById('one').innerHTML = '😭'
-        document.getElementById('two').innerHTML = '😭'
-        document.getElementById('three').innerHTML = '🎞️'
+        document.getElementById('one').innerHTML = '😭';
+        document.getElementById('two').innerHTML = '😭';
+        document.getElementById('three').innerHTML = '🎞️';
+        document.getElementById('four').innerHTML = '◻️';
         openResultsModal();
         completeSession();
         setResults();
@@ -145,10 +162,10 @@ function winnerFunction() {
         }
     if (guessCount === 3) {
         document.getElementById("scoreholder").innerHTML += "That was close!";
-        document.getElementById('one').innerHTML = '😭'
-        document.getElementById('two').innerHTML = '😭'
-        document.getElementById('three').innerHTML = '😭'
-        document.getElementById('four').innerHTML = '🎞️'
+        document.getElementById('one').innerHTML = '😭';
+        document.getElementById('two').innerHTML = '😭';
+        document.getElementById('three').innerHTML = '😭';
+        document.getElementById('four').innerHTML = '🎞️';
         openResultsModal();
         completeSession();
         setResults();
@@ -193,10 +210,10 @@ function completeSession() {
 }
 
 function setResults() {
-    let one = document.getElementById('one').innerHTML
-    let two = document.getElementById('two').innerHTML
-    let three = document.getElementById('three').innerHTML
-    let four = document.getElementById('four').innerHTML
+    let one = document.getElementById('one').innerHTML;
+    let two = document.getElementById('two').innerHTML;
+    let three = document.getElementById('three').innerHTML;
+    let four = document.getElementById('four').innerHTML;
     let scoreholderText = document.getElementById('scoreholder').innerHTML;
     window.localStorage.setItem('one', one);
     window.localStorage.setItem('two', two);
@@ -224,3 +241,4 @@ function addWin() {
         window.localStorage.setItem('userWins', userwins + 1)
     }
 }
+
