@@ -2,7 +2,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"
  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"
 
 initSite();
-var guessCount = 0;
 const hint = document.getElementById("hint");
 hint.addEventListener("click", addActorName);
 //shareButton = document.getElementById('shareButton');
@@ -25,32 +24,56 @@ function initSite() {
     if (!firstTime) {
 
         window.localStorage.setItem('userGames', 0);
-        window.localStorage.setItem('userWins', 0)
-        welcome();
-    }
-    const currentMovie = window.localStorage.getItem('currentMovie')
-    if (!currentMovie) {
+        window.localStorage.setItem('userWins', 0);
         window.localStorage.setItem('currentMovie', 'start')
+        welcome();
+        window.localStorage.setItem('guessCount', 0);
     }
-    if (window.localStorage.getItem('currentMovie') == 'completed') {
 
-        if (checkDate() == true) {
-            let one = window.localStorage.getItem('one');
-            let two = window.localStorage.getItem('two');
-            let three = window.localStorage.getItem('three');
-            let four = window.localStorage.getItem('four');
-            let scoreholderText = window.localStorage.getItem('scoreholderText');
-            document.getElementById('one').innerHTML = one;
-            document.getElementById('two').innerHTML = two;
-            document.getElementById('three').innerHTML = three;
-            document.getElementById('four').innerHTML = four;
-            document.getElementById('scoreholder').innerHTML = scoreholderText;
-            openResultsModal();
-        }
-        else {
-            window.localStorage.setItem('currentMovie', 'start');
-        }
-    }   
+
+    if (checkDate() == true && window.localStorage.getItem('currentMovie') == 'completed') {
+        let one = window.localStorage.getItem('one');
+        let two = window.localStorage.getItem('two');
+        let three = window.localStorage.getItem('three');
+        let four = window.localStorage.getItem('four');
+        let scoreholderText = window.localStorage.getItem('scoreholderText');
+        document.getElementById('one').innerHTML = one;
+        document.getElementById('two').innerHTML = two;
+        document.getElementById('three').innerHTML = three;
+        document.getElementById('four').innerHTML = four;
+        document.getElementById('scoreholder').innerHTML = scoreholderText;
+        openResultsModal();
+    }
+    if (checkDate() == false) {
+        window.localStorage.setItem('currentMovie', 'start');
+        window.localStorage.setItem('guessCount', 0);
+    }
+    let guessCount = Number(window.localStorage.getItem('guessCount'));
+    if (guessCount > 0) {
+        if (guessCount === 1) {
+            document.getElementById("actor0").style.display ="block";
+            document.getElementById("actor-name0").style.display ="none";
+            document.getElementById("actor-name1").style.display = "block";
+            }
+        if (guessCount === 2) {
+            document.getElementById("actor0").style.display ="block";
+            document.getElementById("actor1").style.display ="block";
+            document.getElementById("actor-name0").style.display ="none";
+            document.getElementById("actor-name1").style.display ="none";
+            document.getElementById("actor-name2").style.display = "block";
+            }
+        if (guessCount === 3) {
+                document.getElementById("actor0").style.display ="block";
+                document.getElementById("actor1").style.display ="block";
+                document.getElementById("actor2").style.display ="block";
+                document.getElementById("actor-name0").style.display ="none";
+                document.getElementById("actor-name1").style.display ="none";
+                document.getElementById("actor-name2").style.display = "none";
+                document.getElementById("actor-name3").style.display = "block";
+                document.getElementById('hint').innerHTML= "I give up";
+            }
+    }
+       
 }
 
 function checkDate() {
@@ -59,8 +82,17 @@ function checkDate() {
     let month = d.getMonth() + 1;
     let day = d.getDate();
     let userday = Number(window.localStorage.getItem('day'));
+    if (!userday) {
+        window.localStorage.setItem('day', day);
+    }
     let usermonth = Number(window.localStorage.getItem('month'));
+    if (!usermonth) {
+        window.localStorage.setItem('month', month);
+    }
     let useryear = Number(window.localStorage.getItem('year'));
+    if (!useryear) {
+        window.localStorage.setItem('year', year);
+    }
     if (year === useryear && day === userday && month === usermonth) {
         return true;
     }
@@ -77,28 +109,30 @@ function welcome() {
 // add actor name if wrong answer or hint
 function addActorName() {
     if (window.localStorage.getItem('currentMovie') != 'completed') {
+        let oldGuessCount = Number(window.localStorage.getItem('guessCount'));
 
-        if (guessCount === 0) {
+        if (oldGuessCount === 0) {
             document.getElementById("actor0").style.display ="block";
             document.getElementById("actor-name0").style.display = "none";
             document.getElementById("actor-name1").style.display = "block";
             }
-        if (guessCount === 1) {
+        if (oldGuessCount === 1) {
             document.getElementById("actor1").style.display ="block";
             document.getElementById("actor-name1").style.display = "none";
             document.getElementById("actor-name2").style.display = "block";
             }
-        if (guessCount === 2) {
+        if (oldGuessCount === 2) {
             document.getElementById("actor2").style.display ="block";
             document.getElementById("actor-name2").style.display = "none";
             document.getElementById("actor-name3").style.display = "block";
-            hint.innerHTML= "I give up";
+            document.getElementById('hint').innerHTML= "I give up";
             }
 
-        guessCount = guessCount + 1;
-        if (guessCount === 4 ) {
+        if (oldGuessCount === 3 ) {
             loserFunction();
         }
+        let newGuessCount = oldGuessCount + 1;
+        window.localStorage.setItem('guessCount', newGuessCount)
     }
 }
 
@@ -124,6 +158,7 @@ function openResultsModal() {
 
 //If user wins
 function winnerFunction() {
+    let guessCount = Number(window.localStorage.getItem('guessCount'))
     if (guessCount === 0) {
         document.getElementById("scoreholder").innerHTML += "Great Job!";
         document.getElementById('one').innerHTML = '🎞️';
