@@ -1,10 +1,7 @@
-import os
-import sys
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session, json, make_response
-from flask_session import Session
-from tempfile import mkdtemp
+from flask import Flask, flash, redirect, render_template
 import datetime
+from changeMovie import x
 
 # Configures app
 app = Flask(__name__)
@@ -18,10 +15,6 @@ db = SQL("sqlite:///movies.db")
 # Set up index page
 @app.route("/")
 def index():
-    todaysDate = datetime.date.today()
-    startDate = datetime.date(2022, 4, 14)
-    difference = todaysDate - startDate
-    x = difference.days
     movies = db.execute("SELECT title, titleid FROM movielist;")
     todays_movie = movies[x]['title']
     todays_movieid = movies[x]['titleid']
@@ -30,7 +23,6 @@ def index():
     date = datetime.date.today()
 
     return render_template("index.html", todays_movie=todays_movie, actors=actors, all_movies=all_movies, date=date)
-
 
 
     
