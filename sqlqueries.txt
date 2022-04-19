@@ -4,11 +4,12 @@ CREATE TABLE ratings (titleid TEXT, rating DEC, votes INT);
 CREATE TABLE basic (titleid TEXT, type TEXT, title TEXT, original TEXT, isAdult INT, start INT, end INT, runtime INT, genre TEXT);
 CREATE TABLE names (personid TEXT, name TEXT, birth INT, death INT, profession TEXT, knowntitles TEXT);
 CREATE TABLE akas (titleid TEXT, ordering INT, title TEXT, region TEXT, language TEXT, types TEXT, attributes TEXT, original INT);
+CREATE TABLE principles (titleid TEXT, ordering INT, personid TEXT, category TEXT, job TEXT, characters TEXT);
 
 
 
-#Creating table of movies where votes are greater than 250000 in number, non adult titles, and type movies
-CREATE TABLE movielist AS SELECT DISTINCT basic.title, basic.titleid FROM basic  JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND basic.titleid IN (SELECT titleid FROM ratings WHERE votes > 250000);  Has movies and title id
+#Creating table of movies where votes are greater than 50000 in number, non adult titles, and type movies
+CREATE TABLE movielist AS SELECT DISTINCT basic.title, basic.titleid FROM basic  JOIN akas ON basic.titleid = akas.titleid WHERE basic.type = "movie" AND basic.isAdult = 0 AND akas.language = "en" AND basic.titleid IN (SELECT titleid FROM ratings WHERE votes > 50000);  Has movies and title id
 
 #Create table that links actors to movies
 CREATE TABLE actors AS SELECT * FROM principles WHERE titleid IN (SELECT titleid FROM movielist);

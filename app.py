@@ -5,7 +5,6 @@ from flask import Flask, flash, redirect, render_template, request, session, jso
 from flask_session import Session
 from tempfile import mkdtemp
 import datetime
-import schedule
 
 # Configures app
 app = Flask(__name__)
@@ -14,13 +13,13 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True 
 
 # Configure CS50 library to use SQlite database
-db = SQL("sqlite:///moviesmaster.db")
+db = SQL("sqlite:///movies.db")
 
 # Set up index page
 @app.route("/")
 def index():
     todaysDate = datetime.date.today()
-    startDate = datetime.date(2022, 4, 15)
+    startDate = datetime.date(2022, 4, 14)
     difference = todaysDate - startDate
     x = difference.days
     movies = db.execute("SELECT title, titleid FROM movielist;")
