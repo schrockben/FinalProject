@@ -4,17 +4,21 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"
 initSite();
 const hint = document.getElementById("hint");
 hint.addEventListener("click", addActorName);
-//shareButton = document.getElementById('shareButton');
-//shareButton.addEventListener('click', share) 
+let shareButton = document.getElementById('shareButton');
 
-function copy() {
+shareButton.addEventListener("click", async () => {
+    try {
     let one = document.getElementById('one').innerHTML;
     let two = document.getElementById('two').innerHTML;
     let three = document.getElementById('three').innerHTML;
     let four = document.getElementById('four').innerHTML;
-    let data = 'https://cinemle.com' + one + two + three + four
-    navigator.clipboard.writeText(data);
-}
+    let data = 'https://cinemle.com';
+      await navigator.share({ title: one + two + three + four, text: one + two + three + four, url: data });
+      console.log("Data was shared successfully");
+    } catch (err) {
+      console.error("Share failed:", err.message);
+    }
+  });
 
 
 //Initialize site
