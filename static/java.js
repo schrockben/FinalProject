@@ -12,7 +12,7 @@ shareButton.addEventListener("click", async () => {
     let two = document.getElementById('two').innerHTML;
     let three = document.getElementById('three').innerHTML;
     let four = document.getElementById('four').innerHTML;
-    let data = 'https://cinemle.com';
+    let data = 'www.cinemle.com';
       await navigator.share({ title: one + two + three + four, text: one + two + three + four, url: data });
       console.log("Data was shared successfully");
     } catch (err) {
@@ -214,13 +214,26 @@ function winnerFunction() {
 }
 
 function stats() {
-    wins = window.localStorage.getItem("userWins");
-    games = window.localStorage.getItem("userGames");
-    winperc = Math.round(Number(wins) / Number(games) * 100) ;
-    document.getElementById('wins').innerHTML = "Wins: " + + wins;
-    document.getElementById('games').innerHTML = "Games Played: " + games;
-    document.getElementById('winperc').innerHTML = "Win Percentage: " + winperc + "%";
-    document.getElementById('stats').style.display = "block";
+    let wins = window.localStorage.getItem("userWins");
+    let games = window.localStorage.getItem("userGames");
+    let winperc = Math.round(Number(wins) / Number(games) * 100);
+    let current = document.getElementById('cinemle').innerHTML;
+    if (current == 'Cinemle') {
+        document.getElementById('cinemle').innerHTML = 'Wins: ' + wins;
+        }
+
+    if (current == 'Wins: ' + wins) {
+        document.getElementById('cinemle').innerHTML = "Games Played: " + games;
+        }
+
+    if (current == "Games Played: " + games) {
+        document.getElementById('cinemle').innerHTML = "Win Percentage: " + winperc + "%";
+        }
+    
+    if (current == "Win Percentage: " + winperc + "%") {
+        document.getElementById('cinemle').innerHTML = 'Cinemle';
+        }
+    
 }
 
 function closeStats() {

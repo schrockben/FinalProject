@@ -25,7 +25,7 @@
       <button id="helpbutton">
         <a id="help" class="bi bi-info-circle-fill" onclick="return welcome();"></a>
       </button>
-      <div class="text" id="flickle">Cinemle</div>
+      <div class="text" id="cinemle">Cinemle</div>
       <button id="statsbutton">
       <a id="scorehistory" class="bi bi-bar-chart-fill" onclick="return stats()"></a>
       </button>
@@ -33,24 +33,16 @@
   </header>
   <hr class="white">
   <main>
-    <div type="modal" id="stats" class="stats">
-      <div class="wins">
-      <span id="wins"></span>
-      </div>
-      <div class="games">
-      <span id="games"></span>
-      </div>
-      <div class="winperc">
-      <span id="winperc"></span>
-      </div>
     </div>
     <div type="modal" id="welcome" class="welcome">
+      <div class="welcome-border">
       <div>Welcome to Cinemle</div>
       <p>Are you a movie buff? Try and guess the movie based upon the actors.</p>
       <p>You will get one actor at a time and you can either guess the movie or skip to reveal another actor.</p>
       <p>If you guess wrong you you we will reveal another actor and you can try again. </p>
       <p>If you cant guess the correct movie from four actors then you will have failed and will need to wait until tomorrow. The movie will change every day. Good Luck!</p>
       <button class="btn btn-danger" onclick="closeWelcome()">Continue</button>
+    </div>
   </div>
     </div>
     <div id="timestamp">{{ date }}</div>
@@ -83,7 +75,7 @@
     </div>
     <!-- Pop up display for winning/losing-->
     <div id="box" type="modal" class="box"> 
-      <button class="exit" id="exit" onclick="hideBox()">Back</button>
+      <button class="exit" id="exit" onclick="hideBox()">X</button>
       <div class="todays_movie_revealed">{{ todays_movie }}</div>
         <div id="scoreholder"> 
           <div id="score"> <!-- person icons per score-->
@@ -93,7 +85,7 @@
             <div id='four'></div>
             <button class ="btn btn-secondary" id="shareButton" type="button">Share</button>
           </div>
-        </div>x
+        </div>
         <div id="trailer">
           <a class="trailer-link" id="trailer-link">Trailer</a>
           <script>
