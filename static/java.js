@@ -12,8 +12,7 @@ shareButton.addEventListener("click", async () => {
     let two = document.getElementById('two').innerHTML;
     let three = document.getElementById('three').innerHTML;
     let four = document.getElementById('four').innerHTML;
-    let data = 'www.cinemle.com';
-      await navigator.share({ url: data + "/" + one + two + three + four });
+      await navigator.share({ text: "www.cinemle.com/" + one + two + three + four });
       console.log("Data was shared successfully");
     } catch (err) {
       console.error("Share failed:", err.message);
