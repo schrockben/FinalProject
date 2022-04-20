@@ -5,20 +5,28 @@ main {
 
 }
 .body {
-  background-color:black;
+  background: #fc4a1a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .box {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 25%;
+  left: 22.5%;
   top: 20%;
   width: 55%; 
-  height: 60%; 
+  height: auto; 
   overflow: auto; /* Enable scroll if needed */
-  background: rgb(255,253,253);
-background: linear-gradient(90deg, rgba(255,253,253,0.9139005944174545) 0%, rgba(215,215,215,1) 49%, rgba(255,255,255,0.8970938717283788) 100%);
+  background: rgb(131,6,6);
+  background: linear-gradient(90deg, rgba(131,6,6,1) 0%, rgba(0,0,0,0.8491771708683473) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.8491771708683473) 100%);
+  border-color: white;
+  border-width: 5px;
+  border-style: solid;
+  margin: 1%;
+  padding: 1%;
 }
 
 #helpbutton {
@@ -38,14 +46,14 @@ background: linear-gradient(90deg, rgba(255,253,253,0.9139005944174545) 0%, rgba
   left: 25%;
   top: 15%;
   width: 50%; 
-  height: 62vh; 
+  height: auto; 
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(255,255,255); 
   color: black;
   font-family: 'Dongle', sans-serif;
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
-  font-size: 3vh;
+  font-size: auto;
   margin-top: 1%;
   text-align: center;
 }
@@ -86,7 +94,7 @@ background: linear-gradient(90deg, rgba(255,253,253,0.9139005944174545) 0%, rgba
   font-family: 'Dongle', sans-serif;
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
-  color: black !important; 
+  color: white;
   font-size: 5vw;
   text-align: center;
   margin-top: 3%;
@@ -96,7 +104,7 @@ background: linear-gradient(90deg, rgba(255,253,253,0.9139005944174545) 0%, rgba
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
   color: black !important; 
-  font-size: 3vw;
+  font-size: 6vw;
   text-align: center;
 }
 
@@ -104,8 +112,8 @@ background: linear-gradient(90deg, rgba(255,253,253,0.9139005944174545) 0%, rgba
   font-family: 'Dongle', sans-serif;
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
-  color: black !important; 
-  font-size: 2vw;
+  color: white;
+  font-size: auto;
   text-align: center;
   border-style: solid;
   padding-top: 2%;
@@ -117,7 +125,7 @@ background: linear-gradient(90deg, rgba(255,253,253,0.9139005944174545) 0%, rgba
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
   color: black !important; 
-  font-size: 5vh;
+  font-size: auto;
   display: flex;
   justify-content: center;
 }
