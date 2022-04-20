@@ -280,11 +280,6 @@ font-family: 'Playfair Display', serif;
   display: none;
 }
 
-@media (max-width: 800px) {
-  #flex-container2 {
-    flex-direction: column;
-  }
-
 .previous-actor {
     text-align: center;
     color: white;
@@ -314,3 +309,12 @@ font-family: 'Playfair Display', serif;
     font-size: 5vw;
     margin-top: 1%;
 }
+
+@media (max-width: 900px) {
+  #flex-container2 {
+    flex-direction: column;
+  }
+
+  #previous-box {
+    flex-direction: column;
+  }
