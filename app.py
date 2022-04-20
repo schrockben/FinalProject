@@ -24,5 +24,23 @@ def index():
 
     return render_template("index.html", todays_movie=todays_movie, actors=actors, all_movies=all_movies, date=date)
 
+@app.route("/😭😭😭😭")
+def sendItBack():
+    return redirect("/")
 
+@app.route("/🎞️◻️◻️◻️")
+def sendItBack1():
+    return redirect("/")
+
+@app.route("/😭🎞️◻️◻️")
+def sendItBack2():
+    return redirect("/")
+
+@app.route("/😭😭🎞️◻️")
+def sendItBack3():
+    return redirect("/")
+
+@app.route("/😭😭😭🎞️")
+def sendItBack4():
+    return redirect("/")
     
