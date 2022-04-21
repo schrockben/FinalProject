@@ -76,19 +76,31 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
 }
 
 .exit {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 2vw;
+  height: 2vw;
+  opacity: 0.3;
+}
+.exit:hover {
+  opacity: 1;
+}
+.exit:before, .exit:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 2vw;
+  width: 2px;
+  background-color: white;
+}
+.exit:before {
+  transform: rotate(45deg);
+}
+.exit:after {
+  transform: rotate(-45deg);
 }
 
-.exit:hover,
-.exit:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 
 .todays_movie_revealed {
   font-family: 'Dongle', sans-serif;
@@ -334,4 +346,30 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
 
   #previous-box {
     flex-direction: column;
+  }
+
+  .exit {
+    position: absolute;
+    right: 6%;
+    top: 4%;
+    width: 7%;
+    height: 7%;
+    opacity: 0.3;
+  }
+  .exit:hover {
+    opacity: 1;
+  }
+  .exit:before, .exit:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 2vw;
+    width: 2px;
+    background-color: white;
+  }
+  .exit:before {
+    transform: rotate(45deg);
+  }
+  .exit:after {
+    transform: rotate(-45deg);
   }
