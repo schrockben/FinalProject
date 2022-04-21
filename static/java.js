@@ -263,6 +263,13 @@ function closeWelcome() {
     document.getElementById('welcome').style.display = "none";
 }
 
+document.addEventListener('mouseup', function(e) {
+    var container = document.getElementById('box');
+    if (!container.contains(e.target)) {
+        container.style.display = 'none';
+    }
+});
+
 //Close results box
 function hideBox() {
     document.getElementById('box').style.display = "none";
