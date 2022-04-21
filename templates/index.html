@@ -16,7 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Playfair+Display&family=Quicksand:wght@300&display=swap" rel="stylesheet">
-
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="body" onload="trailer()">
@@ -25,7 +28,10 @@
       <button id="helpbutton">
         <a id="help" class="bi bi-info-circle-fill" onclick="return welcome();"></a>
       </button>
-      <div class="text" id="cinemle">Cinemle</div>
+      <div class="cinemle animate__animated animate__zoomIn" id="cinemle" style="display: block">Cinemle</div>
+      <div class="cinemle animate__animated animate__zoomIn" id="wins"></div> 
+      <div class="cinemle animate__animated animate__zoomIn" id="games"></div> 
+      <div class="cinemle animate__animated animate__zoomIn" id="winperc"></div> 
       <button id="statsbutton">
       <a id="scorehistory" class="bi bi-bar-chart-fill" onclick="return stats()"></a>
       </button>
@@ -34,7 +40,7 @@
   <hr class="white">
   <main>
     </div>
-    <div type="modal" id="welcome" class="welcome">
+    <div type="modal" id="welcome" class="welcome animate__animated animate__fadeInTopLeft">
       <div class="welcome-border">
       <div>Welcome to Cinemle</div>
       <p>Are you a movie buff? Try and guess the movie based upon the actors.</p>
@@ -48,10 +54,10 @@
     <div id="timestamp">{{ date }}</div>
       <div id="flex-container2">
         <div id="game-box">
-          <div class="actor-name" id="actor-name0">{{ actors[0]['name'] }}</div>
-          <div class="actor-name" id="actor-name1">{{ actors[1]['name'] }}</div>
-          <div class="actor-name" id="actor-name2">{{ actors[2]['name'] }}</div>
-          <div class="actor-name" id="actor-name3">{{ actors[3]['name'] }}</div>
+          <div class="actor-name animate__animated animate__fadeInDown"  id="actor-name0">{{ actors[0]['name'] }}</div>
+          <div class="actor-name animate__animated animate__fadeInDown" id="actor-name1">{{ actors[1]['name'] }}</div>
+          <div class="actor-name animate__animated animate__fadeInDown" id="actor-name2">{{ actors[2]['name'] }}</div>
+          <div class="actor-name animate__animated animate__fadeInDown" id="actor-name3">{{ actors[3]['name'] }}</div>
         </div>
       </div>  
       <form action="">
@@ -74,7 +80,7 @@
       <button class="btn btn-light" type="button" name="submit-guess" id="submit-guess" >Guess</button>
     </div>
     <!-- Pop up display for winning/losing-->
-    <div id="box" type="modal" class="box"> 
+    <div id="box" type="modal" class="box animate__animated animate__backInUp"> 
       <button class="exit" id="exit" onclick="hideBox()">X</button>
       <div class="todays_movie_revealed">{{ todays_movie }}</div>
         <div id="scoreholder"> 
@@ -103,10 +109,10 @@
       </form>
     </div>
     <div id="previous-box">
-      <div class="previous-actor" id="actor0">{{ actors[0]['name'] }}</div>
-      <div class="previous-actor" id="actor1">{{ actors[1]['name'] }}</div>
-      <div class="previous-actor" id="actor2">{{ actors[2]['name'] }}</div>
-      <div class="previous-actor" id="actor3">{{ actors[3]['name'] }}</div>
+      <div class="previous-actor actor-name animate__animated animate__fadeInRight" id="actor0">{{ actors[0]['name'] }}</div>
+      <div class="previous-actor animate__animated animate__fadeInRight" id="actor1">{{ actors[1]['name'] }}</div>
+      <div class="previous-actor animate__animated animate__fadeInRight" id="actor2">{{ actors[2]['name'] }}</div>
+      <div class="previous-actor animate__animated animate__fadeInRight" id="actor3">{{ actors[3]['name'] }}</div>
     </div>
   </main>
   <hr class="white">

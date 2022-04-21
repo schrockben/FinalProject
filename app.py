@@ -21,6 +21,17 @@ def index():
     actors = db.execute("SELECT DISTINCT actornames.name FROM actornames JOIN actors ON actornames.personid = actors.personid JOIN movielist ON actors.titleid = movielist.titleid WHERE movielist.titleid =  (?) AND (actornames.category = 'actor' OR actornames.category = 'actress') LIMIT 4", todays_movieid)
     all_movies = db.execute('SELECT title FROM movielist;')
     date = datetime.date.today()
+    if len(actors) == 1:
+        actors.append({'name': 'No other actors/actresses'})
+
+    if len(actors) == 2:
+        actors.append({'name': 'No other actors/actresses'})
+        actors.append({'name': 'No other actors/actresses'})
+
+    if len(actors) == 3:
+        actors.append({'name': 'No other actors/actresses'})
+
+
 
     return render_template("index.html", todays_movie=todays_movie, actors=actors, all_movies=all_movies, date=date)
 

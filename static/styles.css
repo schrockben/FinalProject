@@ -16,7 +16,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 22.5%;
-  top: 20%;
+  top: 5%;
   width: 55%; 
   height: auto; 
   overflow: auto; /* Enable scroll if needed */
@@ -42,7 +42,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
 .welcome {
   display: none; 
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   left: 15%;
   top: 10%;
   width: 70%; 
@@ -160,11 +160,11 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   color: white;
 }
 
-.text {
+.cinemle {
   color: white;
   text-align: center;
   font-family: 'Dongle', sans-serif;
-font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 225%
 }
 
@@ -213,6 +213,7 @@ font-family: 'Playfair Display', serif;
 
 #actor-name1 {
   display: none;
+  
 }
 
 #actor-name2 {
@@ -310,9 +311,25 @@ font-family: 'Playfair Display', serif;
     margin-top: 1%;
 }
 
+#wins {
+  display: none;
+}
+
+#games {
+  display: none;
+}
+
+#winperc {
+  display: none;
+}
+
 @media (max-width: 900px) {
   #flex-container2 {
     flex-direction: column;
+  }
+
+  .box {
+    top: 20%;
   }
 
   #previous-box {

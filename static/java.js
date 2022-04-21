@@ -4,21 +4,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"
 initSite();
 const hint = document.getElementById("hint");
 hint.addEventListener("click", addActorName);
-let shareButton = document.getElementById('shareButton');
-
-shareButton.addEventListener("click", async () => {
-    try {
-    let one = document.getElementById('one').innerHTML;
-    let two = document.getElementById('two').innerHTML;
-    let three = document.getElementById('three').innerHTML;
-    let four = document.getElementById('four').innerHTML;
-      await navigator.share({ text: "www.cinemle.com/" + one + two + three + four });
-      console.log("Data was shared successfully");
-    } catch (err) {
-      console.error("Share failed:", err.message);
-    }
-  });
-
+let statcount = 0;
 
 //Initialize site
 function initSite() {
@@ -157,6 +143,20 @@ function loserFunction() {
 function openResultsModal() {
     var resultsModal = document.getElementById('box');
     resultsModal.style.display = "block";
+    let shareButton = document.getElementById('shareButton');
+
+    shareButton.addEventListener("click", async () => {
+    try {
+    let one = document.getElementById('one').innerHTML;
+    let two = document.getElementById('two').innerHTML;
+    let three = document.getElementById('three').innerHTML;
+    let four = document.getElementById('four').innerHTML;
+      await navigator.share({ text: "www.cinemle.com/" + one + two + three + four });
+      console.log("Data was shared successfully");
+    } catch (err) {
+      console.error("Share failed:", err.message);
+    }
+  });
 }
 
 //If user wins
@@ -213,24 +213,43 @@ function winnerFunction() {
 }
 
 function stats() {
-    let wins = window.localStorage.getItem("userWins");
-    let games = window.localStorage.getItem("userGames");
-    let winperc = Math.round(Number(wins) / Number(games) * 100);
-    let current = document.getElementById('cinemle').innerHTML;
-    if (current == 'Cinemle') {
-        document.getElementById('cinemle').innerHTML = 'Wins: ' + wins;
+    let userwins = window.localStorage.getItem("userWins");
+    let usergames = window.localStorage.getItem("userGames");
+    let userwinperc = Math.round(Number(userwins) / Number(usergames) * 100);
+    let cinemle = document.getElementById('cinemle');
+    let games = document.getElementById('games');
+    let wins = document.getElementById('wins');
+    let winperc = document.getElementById('winperc');
+    if (statcount == 0) {
+        console.log('test');
+        cinemle.style.display = "none";
+        wins.innerHTML = "Wins: " + userwins;
+        wins.style.display = 'block';
+        statcount = 1;
+        return statcount;
         }
 
-    if (current == 'Wins: ' + wins) {
-        document.getElementById('cinemle').innerHTML = "Games Played: " + games;
-        }
+    if (statcount == 1) {
+        wins.style.display = 'none';
+        games.innerHTML = "Games Played: " + usergames;
+        games.style.display = 'block';
+        statcount = 2;
+        return statcount;
+        }   
 
-    if (current == "Games Played: " + games) {
-        document.getElementById('cinemle').innerHTML = "Win Percentage: " + winperc + "%";
+    if (statcount == 2) {
+        games.style.display = 'none';
+        winperc.innerHTML = "Win Percentage: " + userwinperc + "%";
+        winperc.style.display = 'block';
+        statcount = 3;
+        return statcount;
         }
     
-    if (current == "Win Percentage: " + winperc + "%") {
-        document.getElementById('cinemle').innerHTML = 'Cinemle';
+    if (statcount == 3) {
+        winperc.style.display = 'none';
+        cinemle.style.display = 'block';
+        statcount = 0;
+        return statcount;
         }
     
 }
