@@ -263,12 +263,13 @@ function closeWelcome() {
     document.getElementById('welcome').style.display = "none";
 }
 
-document.addEventListener('mouseup', function(e) {
-    var container = document.getElementById('box');
-    if (!container.contains(e.target)) {
-        container.style.display = 'none';
-    }
-});
+//This would make the modal exitable by clicking outside the box
+//document.addEventListener('mouseup', function(e) {
+//    var container = document.getElementById('box');
+//    if (!container.contains(e.target)) {
+//        container.style.display = 'none';
+//    }
+//});
 
 //Close results box
 function hideBox() {
