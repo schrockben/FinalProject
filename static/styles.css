@@ -27,6 +27,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   border-style: solid;
   margin: 1%;
   padding: 1%;
+  border-radius: 10px;
 }
 
 #helpbutton {
@@ -56,6 +57,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   font-size: auto;
   margin-top: 1%;
   text-align: center;
+  border-radius: 10px;
 }
 
 .welcome-border {
