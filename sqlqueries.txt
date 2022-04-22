@@ -48,3 +48,11 @@ CREATE TABLE actornames(
   job TEXT,
   characters TEXT
 );
+
+SELECT titleid FROM actors WHERE category = 'actor' OR category = 'actress' GROUP BY titleid HAVING COUNT(DISTINCT personid) > 3; 
+
+SELECT movielist.title, movielist.titleid from movielist JOIN actors ON movielist.titleid = actors.titleid WHERE movielist.titleid = (SELECT titleid FROM actors WHERE category = 'actor' OR category = 'actress' GROUP BY titleid HAVING COUNT(DISTINCT personid) > 3); 
+
+SELECT DISTINCT COUNT (movielist.title, movielist.titleid) from movielist JOIN actors ON movielist.titleid = actors.titleid WHERE movielist.titleid IN (SELECT titleid FROM actors WHERE category = 'actor' OR category = 'actress' GROUP BY titleid HAVING COUNT(DISTINCT personid) > 3); 
+
+SELECT DISTINCT movielist.title, movielist.titleid from movielist JOIN actors ON movielist.titleid = actors.titleid WHERE movielist.titleid IN (SELECT titleid FROM actors WHERE category = 'actor' OR category = 'actress' GROUP BY titleid HAVING COUNT(DISTINCT personid) > 3); 

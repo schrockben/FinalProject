@@ -23,6 +23,8 @@ def index():
     date = datetime.date.today()
     if len(actors) == 1:
         actors.append({'name': 'No other actors/actresses'})
+        actors.append({'name': 'No other actors/actresses'})
+        actors.append({'name': 'No other actors/actresses'})
 
     if len(actors) == 2:
         actors.append({'name': 'No other actors/actresses'})
