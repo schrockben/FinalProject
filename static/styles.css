@@ -16,7 +16,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 22.5%;
-  top: 5%;
+  top: 15%;
   width: 55%; 
   height: auto; 
   overflow: auto; /* Enable scroll if needed */
@@ -110,7 +110,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   font-family: 'Playfair Display', serif;
   font-family: 'Quicksand', sans-serif;
   color: black !important; 
-  font-size: auto;
+  font-size: 120%;
   display: flex;
   justify-content: center;
 }
@@ -306,6 +306,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
 
 #winperc {
   display: none;
+  font-size: 1.4rem;
 }
 
 @media (max-width: 900px) {
@@ -314,7 +315,7 @@ background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, F
   }
 
   .box {
-    top: 20%;
+    top: 18%;
   }
 
   #previous-box {
