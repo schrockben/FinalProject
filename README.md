@@ -1,4 +1,20 @@
-# CS50 Project
-
-Description! This is only a test.
-Editing this file. Testin once again.
+# Cinemle
+#### Video Demo: 
+#### Indianapolis, IN
+## Overview 
+#### Cinemle is a daily movie guessing game in the style of the popular game 'Wordle'. Every day a new movie will be generated. The user will then be given an actor or actresses name that is credited to that movie. The user will get a chance to guess the title of the movie. If they guess correct the game has been won for that day. If they guess wrong or if the user chooses to push the hint button they will get the name of another actor or actress that is credited in the movie. There will always be four chances for the user to guess the correct movie and four actors or actresses. After winning or losing, the user will then be given a score displayed in emojis and the user will be given the chance to share that score. The user's stats will be recorded and available to the player. A user will only be allowed to play the game once per day. The following day a new title will be produced and the user will be allowed to play the game again. 
+## Database
+#### The movie database is a SQL database consisting of movie titles, actors/actresses names, and a table that connects the two using title ids and person ids. The list of movies has been limited to films that were made after 1980 and have had more than 140k votes on the IMDB.com website. The list was also limited to only those films that have at least 4 credited actors/actresses. This database is called upon in app.py by a variable that iterates daily
+## changeMovie.py
+#### This python file iterates the value of "x" by calculating the difference between todays date and the date of when I started the website. This program is ran daily at 0400 UTC on the server. "x" is then read in app.py to iterate to the next movie in the database. 
+## app.py
+#### This program uses flask and jinja to run the website. This app reads the database and loads into the template the movie title and actor/actresses names. This app also redirects back to the index page the links created by the share button. Links are www.cinemle.com/ + "Emoji score"
+## index.html and styles.css
+#### These files contain the HTML code and CSS styling for the website. The HTML uses modals for the pop up welcome screen and for the results at the end of the game. It will also iterate through the user's stats when clicking on the stats button. The CSS uses basic styling to make the page more appealing. It also uses some bootsrap element styling. 
+## java.js
+#### This file contains the java code that runs the website. There are also some <scripts> ran in the HTML template where the java code needed access to jinja variables. The java code first sets a few variables and then, on page load, checks the status of the users game using local storage. If the user has never played before a welcome splash modal will be activated. If it is not the users first time ever playing cinemle then the java will check the game state and will either start a new game, continue an in progress game, or show results of a finished game for that day. This is done using local storage game state data. The java will iterate through the game using the user's inputs of either the guess button or the hint button. It does this by changing the display properties of many elements and storing values as variables. The Java script also uses the same movie database to autocomplete movie titles based upon the user's input so that problems involving variations of film titles can be minimized as much as possible. 
+#### The java program will check for a correct answer with each guess and will either iterate through another actor/actress or will calculate a win. Stats will be logged via local storage including games played and games won. Using javascript these stats will be displayed to the user as games played, games won, and the users win percentage. 
+## pythonanywhere and google domains
+#### The website domain is through google domains and the site is hosted through pythonanywhere. I also run a daily task through python anywhere to update the movie. 
+## Notes
+#### I attempted to create this game with a clean and simple interface to allow quick daily games in a style similar to 'wordle' or 'heardle' while retaining my love of movies. It took a lot of searching, reading, and learning to figure out how my program will run through the movie lists and actors/actresses names, keep track of the game state, and calculate wins. There was a lot of trial and error to get things to work correctly and smoothly. I also tried many different variations of fonts, colors, styles, and animation to make this appealing. I think I could put an infinite amount of work to continually improve it. 
