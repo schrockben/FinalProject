@@ -1,5 +1,5 @@
 # Cinemle
-#### Video Demo: 
+#### Video Demo: https://youtu.be/sYiydCsar80
 #### Indianapolis, IN
 ## Overview 
 #### Cinemle is a daily movie guessing game in the style of the popular game 'Wordle'. Every day a new movie will be generated. The user will then be given an actor or actresses name that is credited to that movie. The user will get a chance to guess the title of the movie. If they guess correct the game has been won for that day. If they guess wrong or if the user chooses to push the hint button they will get the name of another actor or actress that is credited in the movie. There will always be four chances for the user to guess the correct movie and four actors or actresses. After winning or losing, the user will then be given a score displayed in emojis and the user will be given the chance to share that score. The user's stats will be recorded and available to the player. A user will only be allowed to play the game once per day. The following day a new title will be produced and the user will be allowed to play the game again. 
